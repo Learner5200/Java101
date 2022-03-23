@@ -7,4 +7,5 @@ public interface GreetingRecorder {
     void record(String greeting);
 
     List<String> getGreetingLog();
+
 }

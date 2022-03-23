@@ -2,10 +2,10 @@ package com.chriscooksley;
 
 public class Greeter {
 
-    private GreetingRecorder greetingRecorder;
+    GreetingRecorder greetingRecorder;
 
-    public Greeter(GreetingRecorder greetingRecorder) {
-        this.greetingRecorder = greetingRecorder;
+    public Greeter(GreetingRecorder greetingRecorderArgument) {
+        this.greetingRecorder = greetingRecorderArgument;
     }
 
     public String greet(String name) {

@@ -1,22 +1,26 @@
 package com.chriscooksley;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GreeterTest {
 
     @Test
-    public void greet_whenPassedName_returnsGreetingForThatName() {
-        Greeter greeter = new Greeter(new LinkedListBackedGreetingRecorder());
-        assertEquals("Hello Chris", greeter.greet("Chris"));
+    void greet_whenPassedName_returnsGreetingForThatName() {
+        GreetingRecorder greetingRecorder1 = new ArrayListBackedGreetingRecorder();
+        Greeter greeter = new Greeter(greetingRecorder1);
+        String greeting = greeter.greet("Chris");
+        assertEquals("Hello Chris", greeting);
     }
 
     @Test
-    public void getGreetingHistory_returnsAllPastGreetingsOnSeparateLines() {
-        Greeter greeter = new Greeter(new LinkedListBackedGreetingRecorder());
+    void getGreetingHistory_returnsAllPastGreetings() {
+        LinkedListBackedGreetingRecorder greetingRecorder2 = new LinkedListBackedGreetingRecorder();
+        Greeter greeter = new Greeter(greetingRecorder2);
         greeter.greet("Chris");
         greeter.greet("Henry");
-        String expected = "Hello Chris\nHello Henry";
-        assertEquals(expected, greeter.getGreetingHistory());
+        String greetingHistory = greeter.getGreetingHistory();
+        assertEquals("Hello Chris\nHello Henry", greetingHistory);
     }
 }
